@@ -4,5 +4,9 @@
   "description": "Socket.io chat with no persistant data.",
   "main": "socket.js",
   "author": "Nafies Luthfi",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socketio": "^1.0.0"
+  }
 }
