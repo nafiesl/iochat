@@ -39,7 +39,7 @@
 
                 <form id="message-form">
                     <div class="from-group">
-                        <label for="message">Enter Message</label>
+                        <label id="message-textarea-label" for="message">Enter Message</label>
                         <textarea id="message" class="form-control"></textarea>
                         <br>
                         <input type="submit" class="btn btn-primary" value="Send Message">
@@ -59,6 +59,7 @@
             var loginForm = $("#login-form");
             var username = $("#username");
             var users = $("#users");
+            var messageTextareaLabel = $("#message-textarea-label");
 
             // Submit new message
             messageForm.submit(function (e) {
@@ -69,7 +70,7 @@
 
             // Receive sent message from socket.io
             socket.on('new message', function (data) {
-                chat.append('<div class="well">'+data.msg+'</div>');
+                chat.append('<div class="well"><strong>'+data.user+'</strong>: '+data.msg+'</div>');
             });
 
             // User login
@@ -79,6 +80,7 @@
                     if (data) {
                         login.hide();
                         chatArea.show();
+                        messageTextareaLabel.append(' as <span class="text-primary">'+username.val()+'</span>');
                         username.val('');
                     }
                 });
