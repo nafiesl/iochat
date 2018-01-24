@@ -13,7 +13,21 @@
 </head>
 <body>
     <div class="container" style="margin-top: 50px">
-        <div class="row">
+        <div id="login">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="username">Login As</label>
+                            <input type="text" class="form-control" id="username">
+                            <br>
+                            <input type="submit" class="btn btn-success">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="chat-area" style="display: none;" class="row">
             <div class="col-md-4">
                 <div class="well">
                     <h3>Users Online</h3>
@@ -40,6 +54,11 @@
             var messageForm = $("#message-form");
             var message = $("#message");
             var chat = $("#chat");
+            var chatArea = $("#chat-area");
+            var login = $("#login");
+            var loginForm = $("#login-form");
+            var username = $("#username");
+            var users = $("#users");
 
             // Submit new message
             messageForm.submit(function (e) {
@@ -51,6 +70,27 @@
             // Receive sent message from socket.io
             socket.on('new message', function (data) {
                 chat.append('<div class="well">'+data.msg+'</div>');
+            });
+
+            // User login
+            loginForm.submit(function (e) {
+                e.preventDefault();
+                socket.emit('login', username.val(), function (data) {
+                    if (data) {
+                        login.hide();
+                        chatArea.show();
+                        username.val('');
+                    }
+                });
+            });
+
+            // Receive users from server
+            socket.on('get users', function (data) {
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html += '<li class="list-group-item">'+data[i]+'</li>';
+                }
+                users.html(html);
             });
         })();
     </script>
