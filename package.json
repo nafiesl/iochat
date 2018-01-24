@@ -1,0 +1,8 @@
+{
+  "name": "socketchat",
+  "version": "1.0.0",
+  "description": "Socket.io chat with no persistant data.",
+  "main": "socket.js",
+  "author": "Nafies Luthfi",
+  "license": "MIT"
+}
