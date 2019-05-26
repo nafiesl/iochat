@@ -2,12 +2,12 @@
 
 Simple socket.io example for chat application, built based on [Socket.io Chat App Using Websockets](https://www.youtube.com/watch?v=tHbCkikFfDE&t=2068) tutorial.
 
-## Requirements
+## Server Requirements
 
 - Latest [NodeJS](https://nodejs.org/en) LTS installed
 - [Yarn](https://yarnpkg.com/en/docs/install) (optional for nodejs [npm](https://www.npmjs.com/get-npm))
 
-## How to use
+## How to install
 
 1. Clone the repo,
 ```bash
