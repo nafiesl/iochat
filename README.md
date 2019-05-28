@@ -9,20 +9,26 @@ Simple socket.io example for chat application, built based on [Socket.io Chat Ap
 
 ## How to install
 
-1. Clone the repo,
+1. Clone the repo
+
 ```bash
 $ git clone https://github.com/nafiesl/iochat.git
 ```
+
 2. Install package dependencies
+
 ```bash
 $ yarn
 // or
 $ npm install
 ```
+
 3. Run the server
+
 ```bash
 $ node socket
 ```
+
 4. Open app in browser: http://localhost:3000
 
 ## Screenshots
